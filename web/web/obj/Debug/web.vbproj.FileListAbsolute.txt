@@ -1,0 +1,10 @@
+C:\Users\Gaimotion\Documents\portfolio web\web\web\bin\web.dll.config
+C:\Users\Gaimotion\Documents\portfolio web\web\web\bin\web.dll
+C:\Users\Gaimotion\Documents\portfolio web\web\web\bin\web.pdb
+C:\Users\Gaimotion\Documents\portfolio web\web\web\bin\web.xml
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.vbprojResolveAssemblyReference.cache
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.Resources.resources
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.vbproj.GenerateResource.Cache
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.dll
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.xml
+C:\Users\Gaimotion\Documents\portfolio web\web\web\obj\Debug\web.pdb

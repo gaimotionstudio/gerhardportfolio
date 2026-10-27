@@ -1,0 +1,468 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #050505;
+    color: #f5f5f7;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar Minimalis */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 6%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-logo {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #f5f5f7;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #86868b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f5f5f7;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 6%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 60%);
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(180deg, #ffffff 0%, #86868b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    color: #86868b;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f5f5f7;
+    color: #050505;
+    padding: 0.8rem 1.8rem;
+    border-radius: 980px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    transform: scale(1.03);
+}
+
+/* Section Proyek (Rata Tengah & Ruang Lapang untuk Hover) */
+.section {
+    padding: 10rem 2rem 8rem 2rem; /* Menambah ruang atas & bawah agar card tidak overlap */
+    max-width: 1300px;
+    margin: 0 auto; /* Otomatis membuat seluruh section berada di tengah layar */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0071e3;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #f5f5f7;
+}
+
+/* === CAROUSEL HORIZONTAL (Rata Tengah & Aman dari Overlap) === */
+/* Wadah card dipusatkan dan otomatis wrap ke bawah jika layar menyempit */
+.carousel-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    
+    width: 100%;
+    max-width: 1250px;
+    margin-inline: auto;
+    padding: 1.5rem 1rem;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    flex: 0 1 340px; /* Ukuran dasar card */
+    min-width: 0;
+    max-width: 100%;
+}
+
+.card {
+    background-color: #121214;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efek Hover yang Aman Tanpa Overlap */
+.card:hover {
+    transform: translateY(-10px);
+    background-color: #1a1a1c;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Thumbnail Box */
+.thumbnail-box {
+    width: 100%;
+    height: 52%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Badge Label Platform */
+.badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
+.badge.youtube {
+    background-color: rgba(255, 0, 0, 0.85);
+}
+
+.badge.gdrive {
+    background-color: rgba(66, 133, 244, 0.85);
+}
+
+/* Card Content (Rata Tengah) */
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 48%;
+}
+
+.card-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #f5f5f7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.25rem;
+    width: 100%;
+}
+
+.card-content p {
+    color: #86868b;
+    font-size: 0.88rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.card-action {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #2997ff;
+    transition: color 0.2s ease;
+}
+
+.card:hover .card-action {
+    color: #70b5ff;
+}
+
+/* === RESPONSIVE HANDPHONE (Mobile View) === */
+@media (max-width: 768px) {
+    .section {
+        padding: 7rem 1.5rem 4rem 1.5rem;
+    }
+
+    .carousel-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-x: visible;
+        padding: 1rem 0;
+        gap: 1.5rem;
+    }
+
+    .card-link {
+        flex: unset;
+        width: 100%;
+    }
+
+    .card {
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .thumbnail-box {
+        height: 220px;
+    }
+
+    .card-content {
+        height: auto;
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .card-content h3 {
+        white-space: normal;
+    }
+
+    .card-content p {
+        -webkit-line-clamp: unset;
+    }
+
+.card-action {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #2997ff;
+    transition: color 0.2s ease;
+}
+
+.card:hover .card-action {
+    color: #70b5ff;
+}
+
+/* Footer Section */
+.footer-section {
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    color: #86868b;
+    font-size: 0.85rem;
+}
+
+/* === RESPONSIVE HANDPHONE (Mobile View) === */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 5%;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+
+    .hero {
+        padding: 0 5%;
+    }
+
+    .section {
+        padding: 7rem 5% 4rem 5%;
+    }
+
+    .section-header {
+        padding-right: 0;
+    }
+
+    .carousel-container {
+        flex-direction: column;
+        overflow-x: visible;
+        padding-right: 0;
+        gap: 1.5rem;
+    }
+
+    .card-link {
+        flex: unset;
+        width: 100%;
+    }
+
+    .card {
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .thumbnail-box {
+        height: 220px;
+    }
+
+    .card-content {
+        height: auto;
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .card-content h3 {
+        white-space: normal;
+    }
+
+    .card-content p {
+        -webkit-line-clamp: unset;
+    }
+}
+
+.card-action {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #2997ff;
+    transition: color 0.2s ease;
+}
+
+.card:hover .card-action {
+    color: #70b5ff;
+}
+
+/* Footer Section */
+.footer-section {
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    color: #86868b;
+    font-size: 0.85rem;
+}
+
+/* === RESPONSIVE HANDPHONE (Mobile View) === */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 5%;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+
+    .hero {
+        align-items: center;
+        text-align: center;
+        padding: 0 5%;
+    }
+
+    .section {
+        padding: 7rem 5% 4rem 5%;
+    }
+
+    .section-header {
+        padding-right: 0;
+    }
+
+    /* Berubah menjadi Stack Vertikal di HP */
+    .carousel-container {
+        flex-direction: column;
+        overflow-x: visible;
+        padding-right: 0;
+        gap: 1.5rem;
+    }
+
+    .card-link {
+        flex: unset;
+        width: 100%;
+    }
+
+    .card {
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .thumbnail-box {
+        height: 220px;
+    }
+
+    .card-content {
+        height: auto;
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .card-content h3 {
+        white-space: normal;
+    }
+
+    .card-content p {
+        -webkit-line-clamp: unset;
+    }
+}
