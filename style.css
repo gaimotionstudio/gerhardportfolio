@@ -140,14 +140,18 @@ nav {
 }
 
 /* === CAROUSEL HORIZONTAL (Rata Tengah & Aman dari Overlap) === */
+/* Wadah card dipusatkan dan otomatis wrap ke bawah jika layar menyempit */
 .carousel-container {
+    box-sizing: border-box;
     display: flex;
-    justify-content: center; /* Memposisikan card di tengah jika jumlahnya sedikit */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 1.5rem 1rem; /* Padding ekstra agar efek hover tidak terpotong */
-    scrollbar-width: none;
+    
+    width: 100%;
+    max-width: 1250px;
+    margin-inline: auto;
+    padding: 1.5rem 1rem;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -157,8 +161,9 @@ nav {
 .card-link {
     text-decoration: none;
     color: inherit;
-    flex: 0 0 350px;
-    scroll-snap-align: start;
+    flex: 0 1 340px; /* Ukuran dasar card */
+    min-width: 0;
+    max-width: 100%;
 }
 
 .card {
