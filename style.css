@@ -1,3 +1,8 @@
+/* Mengaktifkan Smooth Scrolling secara global */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,13 +17,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Navbar ala Apple */
+/* Navbar ala Apple & Responsive Stack */
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     display: flex;
@@ -61,12 +66,12 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     background: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
     font-weight: 700;
     letter-spacing: -0.015em;
     margin-bottom: 1rem;
@@ -101,7 +106,7 @@ nav {
 
 /* Section Galeri Portofolio */
 .section {
-    padding: 6rem 5%;
+    padding: 8rem 5% 6rem 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -113,7 +118,7 @@ nav {
     letter-spacing: -0.01em;
 }
 
-/* Grid Dinamis: Otomatis menyesuaikan lebar layar */
+/* Grid Dinamis */
 .grid-card {
     display: grid;
     grid-template-columns: repeat);
@@ -167,11 +172,11 @@ nav {
 }
 
 .badge.youtube {
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: rgba(255, 0, 0, 0.85);
 }
 
 .badge.gdrive {
-    background-color: rgba(66, 133, 244, 0.8);
+    background-color: rgba(66, 133, 244, 0.85);
 }
 
 .card-content {
@@ -192,11 +197,28 @@ nav {
     font-size: 0.95rem;
 }
 
-/* Footer */
-footer {
-    text-align: center;
+/* Footer Section */
+.footer-section {
     padding: 3rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
     color: #86868b;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Media Query: Stack Navbar pada Layar Kecil (Mobile) */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .section {
+        padding-top: 9rem;
+    }
 }
