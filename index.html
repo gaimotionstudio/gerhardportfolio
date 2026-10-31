@@ -124,6 +124,30 @@
         </div>
     </section>
 
+    <!-- Tools Section (marquee logo) -->
+    <section id="tools" class="tools">
+        <div class="section-header">
+            <span class="section-tag">Tools</span>
+            <h2 class="section-title">Tools yang Saya Gunakan.</h2>
+        </div>
+
+        <div class="marquee">
+            <div class="marquee-track">
+                <!-- Grup 1 -->
+                <div class="marquee-group">
+                    <div class="tool"><img src="assets/logos/cinema-4d.png" alt="Cinema 4D" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/zbrush.png" alt="ZBrush" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/redshift.png" alt="Redshift Render" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/octane.png" alt="Octane Render" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/after-effects.png" alt="Adobe After Effects" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/photoshop.png" alt="Adobe Photoshop" loading="lazy"></div>
+                    <div class="tool"><img src="assets/logos/premiere-pro.png" alt="Adobe Premiere Pro" loading="lazy"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Footer (rata tengah) -->
     <footer id="kontak" class="footer">
         <div class="footer-inner">
@@ -161,5 +185,35 @@
         </div>
     </footer>
 
+    <script>
+        // Marquee loop tanpa putus:
+        // isi track dengan salinan grup secukupnya agar selalu menutupi layar,
+        // lalu geser tepat sebesar satu grup. Karena semua grup identik,
+        // sambungan antar grup tidak akan terlihat.
+        (function () {
+            var track = document.querySelector('.marquee-track');
+            var base = track.querySelector('.marquee-group');
+            var speed = 60; // piksel per detik, ubah untuk mempercepat/memperlambat
+
+            function build() {
+                track.querySelectorAll('.marquee-group.clone').forEach(function (n) { n.remove(); });
+                var w = base.getBoundingClientRect().width;
+                if (!w) return;
+                var copies = Math.ceil(window.innerWidth / w) + 1;
+                for (var i = 0; i < copies; i++) {
+                    var c = base.cloneNode(true);
+                    c.classList.add('clone');
+                    c.setAttribute('aria-hidden', 'true');
+                    track.appendChild(c);
+                }
+                track.style.setProperty('--shift', w + 'px');
+                track.style.setProperty('--duration', (w / speed) + 's');
+            }
+
+            build();
+            window.addEventListener('load', build);
+            window.addEventListener('resize', build);
+        })();
+    </script>
 </body>
 </html>

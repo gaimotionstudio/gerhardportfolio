@@ -403,6 +403,83 @@ svg {
 }
 
 /* ============================================
+   TOOLS MARQUEE
+   ============================================ */
+
+.tools {
+    scroll-margin-top: var(--nav-h);
+    padding: clamp(4rem, 10vw, 6rem) 0 clamp(2rem, 5vw, 3rem);
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Track berisi dua grup identik; animasi bergeser tepat 50% (satu grup) */
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--duration, 30s) linear infinite;
+    will-change: transform;
+}
+
+.marquee-group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    /* Sama dengan gap, sehingga jarak di sambungan grup identik dengan jarak antar logo */
+    padding-right: clamp(2.5rem, 6vw, 4rem);
+}
+
+.tool {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(40px, 6vw, 56px);
+}
+
+.tool img {
+    height: 100%;
+    width: auto;
+    max-width: clamp(110px, 14vw, 170px);
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.4s var(--ease);
+    /* Opsional: jadikan semua logo putih agar seragam di tema gelap.
+       Hapus baris berikut jika ingin warna asli logo. */
+    filter: brightness(0) invert(1);
+}
+
+.tool img:hover {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(var(--shift, 0px) * -1));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+
+    .marquee {
+        overflow-x: auto;
+    }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
