@@ -229,34 +229,22 @@ svg {
    CAROUSEL (geser halus di semua device)
    ============================================ */
 .carousel-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: clamp(1rem, 2.5vw, 2rem);
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     padding: 1.5rem var(--gutter) 2rem;
-    scroll-padding-inline: var(--gutter);
+    justify-items: center;
 }
 
 .carousel-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Tengah saat item sedikit, tetap bisa di-scroll saat item banyak */
-.carousel-container > :first-child {
-    margin-inline-start: auto;
-}
 
-.carousel-container > :last-child {
-    margin-inline-end: auto;
-}
 
 .card-link {
-    flex: 0 0 clamp(260px, 78vw, 340px);
-    scroll-snap-align: start;
+    width: 100%;
+    max-width: 420px;
     text-decoration: none;
     color: inherit;
     border-radius: var(--radius-lg);
@@ -449,8 +437,7 @@ svg {
    ACCESSIBILITY: kurangi animasi bila diminta
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
-    html,
-    .carousel-container {
+    html {
         scroll-behavior: auto;
     }
 
