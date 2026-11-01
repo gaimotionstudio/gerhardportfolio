@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +13,24 @@
 
     <!-- Navbar -->
     <nav class="nav">
-        <a href="#" class="nav-logo">Portfolio.</a>
+        <a href="#" class="nav-logo">Portfolio<span class="dot">.</span></a>
         <ul class="nav-links">
             <li><a href="#tentang">About</a></li>
             <li><a href="#proyek">Projects</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#kontak">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero: H1 (heading utama halaman) -->
     <section id="tentang" class="hero">
         <div class="hero-content">
+            <span class="eyebrow">Motion Designer &amp; Visual Artist</span>
             <h1>Portfolio</h1>
-            <p>Kumpulan proyek kreatif yang dirancang dengan kesederhanaan, fokus pada detail, dan pengalaman visual yang bersih.</p>
-            <a href="#proyek" class="btn">Jelajahi Proyek</a>
+            <p>A collection of creative projects shaped by simplicity, attention to detail, and a clean visual experience.</p>
+            <a href="#proyek" class="btn">Explore Projects</a>
 
-            <!-- Sosial Media (ganti href dengan link Anda) -->
+            <!-- Social media (replace the links with your own) -->
             <div class="socials">
                 <a href="https://www.instagram.com/USERNAME_ANDA" target="_blank" rel="noopener" class="social" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -59,81 +61,80 @@
         </div>
     </section>
 
-    <!-- Proyek / Galeri Section -->
+    <!-- Projects: H2 section, H3 per item -->
     <section id="proyek" class="section">
         <div class="section-header">
             <span class="section-tag">Featured Works</span>
-            <h2 class="section-title">Pilihan Proyek Terbaru.</h2>
+            <h2 class="section-title">Latest Selected <span class="accent">Projects.</span></h2>
         </div>
 
-        <!-- Carousel: geser horizontal di semua ukuran layar -->
         <div class="carousel-container">
 
             <a href="https://www.youtube.com/watch?v=CONTOH_VIDEO" target="_blank" rel="noopener" class="card-link">
-                <div class="card">
+                <article class="card">
                     <div class="thumbnail-box" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');">
                         <span class="badge youtube">YouTube</span>
                     </div>
                     <div class="card-content">
                         <h3>Showreel</h3>
-                        <p>Motion graphics dan eksplorasi permodelan visual interaktif.</p>
-                        <span class="card-action">Tonton Video &rarr;</span>
+                        <p>Motion graphics and exploration of interactive visual modeling.</p>
+                        <span class="card-action">Watch Video &rarr;</span>
                     </div>
-                </div>
+                </article>
             </a>
 
             <a href="https://www.youtube.com/watch?v=LAnNUqxj_7Y" target="_blank" rel="noopener" class="card-link">
-                <div class="card">
+                <article class="card">
                     <div class="thumbnail-box" style="background-image: url('https://i.ytimg.com/vi_webp/LAnNUqxj_7Y/maxresdefault.webp');">
                         <span class="badge youtube">YouTube</span>
                     </div>
                     <div class="card-content">
                         <h3>Lazada</h3>
-                        <p>Motion graphics Campaign Lazada 9.9.</p>
+                        <p>Motion graphics for the Lazada 9.9 Campaign.</p>
                         <span class="card-action">Watch Video &rarr;</span>
                     </div>
-                </div>
+                </article>
             </a>
 
             <a href="https://www.youtube.com/watch?v=9LTXZilNdIc&t=37s" target="_blank" rel="noopener" class="card-link">
-                <div class="card">
+                <article class="card">
                     <div class="thumbnail-box" style="background-image: url('https://i.ytimg.com/vi_webp/9LTXZilNdIc/maxresdefault.webp');">
                         <span class="badge youtube">YouTube</span>
                     </div>
                     <div class="card-content">
                         <h3>Lazada Campaign Seller Story</h3>
-                        <p>Pembahasan mendalam proses di balik layar pembuatan karya.</p>
+                        <p>An in-depth behind-the-scenes look at how the project came together.</p>
                         <span class="card-action">Watch Video &rarr;</span>
                     </div>
-                </div>
+                </article>
             </a>
 
             <a href="https://www.youtube.com/watch?v=CONTOH_VIDEO2" target="_blank" rel="noopener" class="card-link">
-                <div class="card">
+                <article class="card">
                     <div class="thumbnail-box" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80');">
                         <span class="badge youtube">YouTube</span>
                     </div>
                     <div class="card-content">
                         <h3>Tutorial &amp; Breakdown</h3>
-                        <p>Pembahasan mendalam proses di balik layar pembuatan karya.</p>
-                        <span class="card-action">Tonton Video &rarr;</span>
+                        <p>An in-depth behind-the-scenes look at how the project came together.</p>
+                        <span class="card-action">Watch Video &rarr;</span>
                     </div>
-                </div>
+                </article>
             </a>
 
         </div>
     </section>
 
-    <!-- Tools Section (marquee logo) -->
+    <!-- Tools: H2 section, H3 subtitle -->
     <section id="tools" class="tools">
         <div class="section-header">
             <span class="section-tag">Tools</span>
-            <h2 class="section-title">Tools yang Saya Gunakan.</h2>
+            <h2 class="section-title">Tools I <span class="accent">Use.</span></h2>
+            <h3 class="section-subtitle">Creative software &amp; render engines</h3>
         </div>
 
         <div class="marquee">
             <div class="marquee-track">
-                <!-- Grup 1 -->
                 <div class="marquee-group">
                     <div class="tool"><img src="assets/logos/cinema-4d.png" alt="Cinema 4D" loading="lazy"></div>
                     <div class="tool"><img src="assets/logos/zbrush.png" alt="ZBrush" loading="lazy"></div>
@@ -143,15 +144,15 @@
                     <div class="tool"><img src="assets/logos/photoshop.png" alt="Adobe Photoshop" loading="lazy"></div>
                     <div class="tool"><img src="assets/logos/premiere-pro.png" alt="Adobe Premiere Pro" loading="lazy"></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer (rata tengah) -->
+    <!-- Footer: H2 section title -->
     <footer id="kontak" class="footer">
         <div class="footer-inner">
-            <a href="#" class="nav-logo">Portfolio.</a>
+            <span class="section-tag">Contact</span>
+            <h2 class="footer-title">Let's <span class="accent">Connect.</span></h2>
 
             <div class="socials">
                 <a href="https://www.instagram.com/USERNAME_ANDA" target="_blank" rel="noopener" class="social" aria-label="Instagram">
@@ -181,19 +182,19 @@
                 </a>
             </div>
 
-            <p>&copy; 2026 Portofolio Anda. Dibuat dengan estetika minimalis.</p>
+            <p>&copy; 2026 Your Portfolio. Crafted with a minimalist aesthetic.</p>
         </div>
     </footer>
 
     <script>
-        // Marquee loop tanpa putus:
-        // isi track dengan salinan grup secukupnya agar selalu menutupi layar,
-        // lalu geser tepat sebesar satu grup. Karena semua grup identik,
-        // sambungan antar grup tidak akan terlihat.
+        // Seamless marquee loop:
+        // fill the track with enough copies of the group to cover the screen,
+        // then shift by exactly one group. Since every group is identical,
+        // the join between groups is invisible.
         (function () {
             var track = document.querySelector('.marquee-track');
             var base = track.querySelector('.marquee-group');
-            var speed = 60; // piksel per detik, ubah untuk mempercepat/memperlambat
+            var speed = 60; // pixels per second, change to speed up or slow down
 
             function build() {
                 track.querySelectorAll('.marquee-group.clone').forEach(function (n) { n.remove(); });

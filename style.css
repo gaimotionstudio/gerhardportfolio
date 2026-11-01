@@ -2,13 +2,17 @@
    VARIABLES
    ============================================ */
 :root {
-    --bg: #050505;
+    --bg: #15151b;
+    --bg-gradient: linear-gradient(160deg, #26262f 0%, #16161c 45%, #202028 100%);
     --surface: #121214;
     --surface-hover: #1a1a1c;
     --text: #f5f5f7;
     --muted: #86868b;
     --accent: #2997ff;
     --accent-blue: #0071e3;
+    --orange: #ff8a1f;
+    --orange-hover: #ffa247;
+    --orange-soft: rgba(255, 138, 31, 0.15);
     --border: rgba(255, 255, 255, 0.06);
     --radius-lg: 24px;
     --nav-h: 64px;
@@ -37,7 +41,9 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: var(--bg-gradient);
+    min-height: 100vh;
     color: var(--text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -67,7 +73,7 @@ svg {
     justify-content: space-between;
     align-items: center;
     padding: 0 var(--gutter);
-    background: rgba(5, 5, 5, 0.75);
+    background: rgba(28, 28, 36, 0.7);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--border);
@@ -98,7 +104,7 @@ svg {
 }
 
 .nav-links a:hover {
-    color: var(--text);
+    color: var(--orange);
 }
 
 /* ============================================
@@ -112,7 +118,7 @@ svg {
     justify-content: center;
     text-align: center;
     padding: calc(var(--nav-h) + 2rem) var(--gutter) 3rem;
-    background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg) 60%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
 }
 
 .hero-content {
@@ -141,8 +147,9 @@ svg {
 
 .btn {
     display: inline-block;
-    background: var(--text);
-    color: var(--bg);
+    background: var(--orange);
+    color: #111;
+    font-weight: 600;
     padding: 0.8rem 1.8rem;
     border-radius: 980px;
     text-decoration: none;
@@ -152,7 +159,7 @@ svg {
 }
 
 .btn:hover {
-    background: #ffffff;
+    background: var(--orange-hover);
     transform: scale(1.03);
 }
 
@@ -215,7 +222,7 @@ svg {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--accent-blue);
+    color: var(--orange);
 }
 
 .section-title {
@@ -252,7 +259,7 @@ svg {
 }
 
 .card-link:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--orange);
     outline-offset: 4px;
 }
 
@@ -293,7 +300,8 @@ svg {
 }
 
 .badge.youtube {
-    background: rgba(255, 0, 0, 0.85);
+    background: rgba(255, 138, 31, 0.9);
+    color: #111;
 }
 
 .card-content {
@@ -329,7 +337,7 @@ svg {
 .card-action {
     font-size: 0.82rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--orange);
     transition: color 0.2s ease;
 }
 
@@ -344,23 +352,23 @@ svg {
     .card-link:hover .card {
         transform: translateY(-8px);
         background: var(--surface-hover);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        border-color: var(--orange);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 24px var(--orange-soft);
     }
 
     .card-link:hover .card-action {
-        color: #70b5ff;
+        color: var(--orange-hover);
     }
 
     .social:hover {
-        color: var(--text);
-        border-color: rgba(255, 255, 255, 0.25);
+        color: var(--orange);
+        border-color: var(--orange);
         background: var(--surface-hover);
         transform: translateY(-3px);
     }
 
     .nav-links a:hover {
-        color: var(--text);
+        color: var(--orange);
     }
 }
 
@@ -368,7 +376,7 @@ svg {
 .social:focus-visible,
 .nav-links a:focus-visible,
 .nav-logo:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--orange);
     outline-offset: 3px;
 }
 
@@ -477,6 +485,103 @@ svg {
     .marquee {
         overflow-x: auto;
     }
+}
+
+/* ============================================
+   ORANGE ACCENTS & HEADING HIERARCHY
+   ============================================ */
+
+/* H1: judul utama (hero) */
+.hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+/* Eyebrow kecil di atas H1 */
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    background: var(--orange-soft);
+    border: 1px solid rgba(255, 138, 31, 0.35);
+    border-radius: 999px;
+}
+
+/* H2: judul setiap section */
+.section-title,
+.footer-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+}
+
+.footer-title {
+    margin-top: 0.25rem;
+}
+
+/* H3: sub-judul (subtitle section dan judul kartu) */
+.section-subtitle {
+    margin-top: 0.75rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.card-content h3 {
+    color: var(--text);
+}
+
+.accent {
+    color: var(--orange);
+}
+
+/* Titik logo di navbar dan footer */
+.nav-logo .dot {
+    color: var(--orange);
+}
+
+/* Efek hover logo tools: sedikit cerah dan naik */
+.tool img:hover {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+/* Garis aksen oranye pada kartu saat tidak di-hover */
+.card {
+    border-top: 2px solid var(--orange);
+}
+
+/* Footer: judul dan label rata tengah */
+.footer .section-tag {
+    margin-bottom: 0;
+}
+
+/* Garis oranye di bawah link navbar saat hover */
+.nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--orange);
+    transition: width 0.3s var(--ease);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* ============================================
