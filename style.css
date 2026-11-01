@@ -460,7 +460,7 @@ svg {
     transition: opacity 0.3s ease, transform 0.4s var(--ease);
     /* Opsional: jadikan semua logo putih agar seragam di tema gelap.
        Hapus baris berikut jika ingin warna asli logo. */
-    filter: brightness(0) invert(1);
+    filter: brightness(1) invert(0);
 }
 
 .tool img:hover {
