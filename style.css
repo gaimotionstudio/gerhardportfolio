@@ -785,7 +785,8 @@ svg {
     display: block;
     width: 100%;
     height: clamp(320px, 60vh, 600px);
-    background-color: transparent;
+    min-height: 320px;
+    background: radial-gradient(circle at center, #23232b 0%, #0e0e12 75%);
     --poster-color: transparent;
     outline: none;
 }
@@ -835,17 +836,24 @@ svg {
     margin: 0;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
+/* Tinggi eksplisit, tanpa flex:1, agar viewer tidak runtuh menjadi 0 */
 .works-grid .viewer {
-    flex: 1;
+    flex: none;
+    width: 100%;
     height: clamp(420px, 70vh, 720px);
+    min-height: 320px;
+    display: block;
+    background: radial-gradient(circle at center, #23232b 0%, #0e0e12 75%);
 }
 
 .works-info {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    min-width: 0;
     padding: clamp(1.5rem, 3vw, 2.25rem);
     background: var(--surface);
     border: 1px solid var(--border);
@@ -893,6 +901,7 @@ svg {
 @media (max-width: 900px) {
     .works-grid {
         grid-template-columns: 1fr;
+        margin: 0 clamp(1rem, 4vw, 1.25rem);
     }
 
     .works-grid .viewer {
