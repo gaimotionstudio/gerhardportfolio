@@ -34,7 +34,7 @@
 html {
     background: var(--bg);
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--nav-h) + 1rem);
+    scroll-padding-top: 0;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
@@ -207,7 +207,7 @@ svg {
     max-width: 1300px;
     margin: 0 auto;
     padding: clamp(5rem, 12vw, 8rem) 0 clamp(4rem, 10vw, 7rem);
-    scroll-margin-top: var(--nav-h);
+    scroll-margin-top: 0;
 }
 
 .section-header {
@@ -553,7 +553,7 @@ svg {
 
 /* Garis aksen oranye pada kartu saat tidak di-hover */
 .card {
-    border-top: 2px solid var(--orange);
+    /* border-top: 2px solid var(--orange); */
 }
 
 /* Footer: judul dan label rata tengah */
@@ -588,7 +588,8 @@ svg {
 
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 320px));
+    justify-content: center;
     gap: clamp(1rem, 2.5vw, 2rem);
     padding: 0 var(--gutter);
 }
@@ -596,16 +597,17 @@ svg {
 .cert-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     gap: 0.5rem;
     width: 100%;
     padding: clamp(1.25rem, 3vw, 1.75rem);
-    text-align: left;
+    text-align: center;
     font: inherit;
     color: var(--text);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--orange);
+    /*border-top: 2px solid var(--orange);*/
     border-radius: var(--radius-lg);
     cursor: pointer;
     transition: transform 0.4s var(--ease), border-color 0.3s ease,
@@ -766,19 +768,19 @@ svg {
         height: 60vh;
     }
 }
-
 /* ============================================
    3D VIEWER FRAME
    ============================================ */
 
 .viewer-frame {
+    position: relative;
     margin: 0 var(--gutter);
     overflow: hidden;
-    background: radial-gradient(circle at center, #23232b 0%, #0e0e12 75%);
+    background: transparent;
     border: 1px solid var(--border);
-    border-top: 2px solid var(--orange);
+    /* border-top: 2px solid var(--orange); */
     border-radius: var(--radius-lg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    box-shadow: none;
 }
 
 .viewer {
@@ -786,7 +788,7 @@ svg {
     width: 100%;
     height: clamp(320px, 60vh, 600px);
     min-height: 320px;
-    background: radial-gradient(circle at center, #23232b 0%, #0e0e12 75%);
+    background: transparent;
     --poster-color: transparent;
     outline: none;
 }
@@ -799,7 +801,7 @@ svg {
     padding: 0.9rem 1.25rem;
     font-size: 0.8rem;
     color: var(--muted);
-    border-top: 1px solid var(--border);
+    /* border-top: 1px solid var(--border); */
     background: rgba(0, 0, 0, 0.25);
 }
 
@@ -814,10 +816,111 @@ svg {
     background: var(--orange);
 }
 
+/* Penghitung "1 / 3" tidak perlu titik oranye */
+.viewer-count::before {
+    display: none;
+}
+
 @media (max-width: 600px) {
     .viewer-frame {
         margin: 0 clamp(1rem, 4vw, 1.25rem);
     }
+}
+
+/* ============================================
+   3D CAROUSEL
+   ============================================ */
+
+/* Slide model ditumpuk di satu sel grid */
+.viewer-stage {
+    flex: 1;
+    display: grid;
+    min-height: 0;
+}
+
+.viewer-slide {
+    grid-area: 1 / 1;
+    min-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s var(--ease), visibility 0.5s;
+}
+
+.viewer-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tombol panah di tengah area model, di atas bar petunjuk */
+.viewer-arrow {
+    position: absolute;
+    top: calc(50% - 30px);
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+                color 0.3s ease, transform 0.3s var(--ease);
+}
+
+.viewer-arrow.prev {
+    left: 12px;
+}
+
+.viewer-arrow.next {
+    right: 12px;
+}
+
+.viewer-arrow:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #111;
+}
+
+.viewer-arrow:active {
+    transform: scale(0.94);
+}
+
+.viewer-arrow:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 3px;
+}
+
+.viewer-count {
+    color: var(--orange);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Keterangan di kolom kanan ditumpuk agar berganti dengan lancar */
+.info-stack {
+    flex: 1;
+    display: grid;
+}
+
+.info-slide {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s var(--ease), visibility 0.5s;
+}
+
+.info-slide.is-active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ============================================
@@ -846,7 +949,8 @@ svg {
     height: clamp(420px, 70vh, 720px);
     min-height: 320px;
     display: block;
-    background: radial-gradient(circle at center, #23232b 0%, #0e0e12 75%);
+    background: transparent;
+    --poster-color: transparent;
 }
 
 .works-info {
@@ -857,7 +961,7 @@ svg {
     padding: clamp(1.5rem, 3vw, 2.25rem);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--orange);
+    /* border-top: 2px solid var(--orange); */
     border-radius: var(--radius-lg);
 }
 
