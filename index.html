@@ -70,9 +70,9 @@
 
         <div class="carousel-container">
 
-            <a href="https://www.youtube.com/watch?v=CONTOH_VIDEO" target="_blank" rel="noopener" class="card-link">
+            <a href="https://youtu.be/BBTGfEQ6L5E" target="_blank" rel="noopener" class="card-link">
                 <article class="card">
-                    <div class="thumbnail-box" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');">
+                    <div class="thumbnail-box" style="background-image: url('https://i9.ytimg.com/vi_webp/BBTGfEQ6L5E/maxresdefault.webp?v=6a5dc02d&sqp=CJjundcG&rs=AOn4CLA7caLAWz18UAZKMjrMpUOCzFBsIA');">
                         <span class="badge youtube">YouTube</span>
                     </div>
                     <div class="card-content">
@@ -122,6 +122,70 @@
                 </article>
             </a>
 
+        </div>
+    </section>
+
+    <!-- 3D Works: H2 section, interactive model viewer in a framed box -->
+    <section id="3d" class="section works-3d">
+        <div class="section-header">
+            <span class="section-tag">3D Works</span>
+            <h2 class="section-title">Interactive <span class="accent">3D Models.</span></h2>
+        </div>
+ 
+        <div class="works-grid">
+            <!-- Kolom kiri: model viewer -->
+            <div class="viewer-frame">
+                <model-viewer src="assets/models/cube.gltf" camera-controls auto-rotate
+                              shadow-intensity="1" alt="Interactive 3D model preview"
+                              class="viewer"></model-viewer>
+                <div class="viewer-bar">
+                    <span>Drag to rotate</span>
+                    <span>Scroll to zoom</span>
+                </div>
+            </div>
+ 
+            <!-- Kolom kanan: keterangan proyek -->
+            <div class="works-info">
+                <h3>Project Breakdown</h3>
+                <p>Describe the concept, the modeling and lighting approach, and the render workflow behind this piece.</p>
+                <dl class="works-meta">
+                    <div><dt>Software</dt><dd>Cinema 4D, Redshift</dd></div>
+                    <div><dt>Type</dt><dd>Product visualization</dd></div>
+                    <div><dt>Year</dt><dd>2026</dd></div>
+                </dl>
+                <a href="#proyek" class="btn">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+     <!-- Certificates: H2 section, H3 per item, opens a pop-up -->
+    <section id="sertifikat" class="section certificates">
+        <div class="section-header">
+            <span class="section-tag">Certificates</span>
+            <h2 class="section-title">Certifications &amp; <span class="accent">Credentials.</span></h2>
+        </div>
+ 
+        <div class="cert-grid">
+            <button type="button" class="cert-card" data-src="assets/certificates/Prima Gerhard Coursera FEKUQKC4CYJ4.pdf" data-type="pdf" data-title="Visual Elements of User Interface Design">
+                <span class="cert-tag">Certificate</span>
+                <h3>Visual Elements of User Interface Design</h3>
+                <p>Issuing Organization &middot; 2026</p>
+                <span class="card-action">View Certificate &rarr;</span>
+            </button>
+ 
+            <button type="button" class="cert-card" data-src="assets/certificates/sertifikat-2.pdf" data-type="pdf" data-title="Certificate Name 2">
+                <span class="cert-tag">Certificate</span>
+                <h3>Certificate Name 2</h3>
+                <p>Issuing Organization &middot; 2025</p>
+                <span class="card-action">View Certificate &rarr;</span>
+            </button>
+ 
+            <button type="button" class="cert-card" data-src="assets/certificates/sertifikat-3.jpg" data-type="image" data-title="Certificate Name 3">
+                <span class="cert-tag">Certificate</span>
+                <h3>Certificate Name 3</h3>
+                <p>Issuing Organization &middot; 2025</p>
+                <span class="card-action">View Certificate &rarr;</span>
+            </button>
         </div>
     </section>
 
@@ -182,12 +246,12 @@
                 </a>
             </div>
 
-            <p>&copy; 2026 Your Portfolio. Crafted with a minimalist aesthetic.</p>
+            <p>&copy; 2026 Personal Portfolio.</p>
         </div>
     </footer>
 
     <script>
-        // Seamless marquee loop:
+         // Seamless marquee loop:
         // fill the track with enough copies of the group to cover the screen,
         // then shift by exactly one group. Since every group is identical,
         // the join between groups is invisible.
@@ -195,7 +259,7 @@
             var track = document.querySelector('.marquee-track');
             var base = track.querySelector('.marquee-group');
             var speed = 60; // pixels per second, change to speed up or slow down
-
+ 
             function build() {
                 track.querySelectorAll('.marquee-group.clone').forEach(function (n) { n.remove(); });
                 var w = base.getBoundingClientRect().width;
@@ -210,11 +274,70 @@
                 track.style.setProperty('--shift', w + 'px');
                 track.style.setProperty('--duration', (w / speed) + 's');
             }
-
+ 
             build();
             window.addEventListener('load', build);
             window.addEventListener('resize', build);
         })();
     </script>
+    <!-- Certificate pop-up -->
+    <dialog id="certModal" class="cert-modal">
+        <button type="button" class="cert-close" aria-label="Close">&times;</button>
+        <div class="cert-body"></div>
+        <div class="cert-footer">
+            <p class="cert-caption"></p>
+            <a class="cert-open" target="_blank" rel="noopener">Open in new tab &rarr;</a>
+        </div>
+    </dialog>
+ 
+    <script>
+        // Certificate pop-up
+        (function () {
+            var modal = document.getElementById('certModal');
+            var body = modal.querySelector('.cert-body');
+            var caption = modal.querySelector('.cert-caption');
+            var openLink = modal.querySelector('.cert-open');
+ 
+            document.querySelectorAll('.cert-card').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var src = btn.dataset.src;
+                    var title = btn.dataset.title;
+ 
+                    body.innerHTML = '';
+                    if (btn.dataset.type === 'pdf') {
+                        var frame = document.createElement('iframe');
+                        frame.src = src;
+                        frame.title = title;
+                        body.appendChild(frame);
+                    } else {
+                        var img = document.createElement('img');
+                        img.src = src;
+                        img.alt = title;
+                        body.appendChild(img);
+                    }
+ 
+                    caption.textContent = title;
+                    openLink.href = src;
+                    modal.showModal();
+                });
+            });
+ 
+            modal.querySelector('.cert-close').addEventListener('click', function () {
+                modal.close();
+            });
+ 
+            // Close when clicking the dark backdrop
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) modal.close();
+            });
+ 
+            // Clear content on close so the file stops loading
+            modal.addEventListener('close', function () {
+                body.innerHTML = '';
+            });
+        })();
+    </script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </body>
 </html>
